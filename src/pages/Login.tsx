@@ -31,13 +31,19 @@ export default function LoginPage() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     await login(loginEmail, loginPassword);
-    navigate('/dashboard');
+    const params = new URLSearchParams(location.search);
+    const returnTo = params.get('returnTo') || '/dashboard';
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) navigate(returnTo);
   };
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     await register(registerName, registerEmail, registerPassword);
-    navigate('/dashboard');
+    const params = new URLSearchParams(location.search);
+    const returnTo = params.get('returnTo') || '/dashboard';
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) navigate(returnTo);
   };
 
   const handleTabChange = (value: string) => {

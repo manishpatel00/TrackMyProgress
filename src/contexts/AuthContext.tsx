@@ -55,7 +55,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 1000));
 
-      // Demo validation (in real app, this would be server-side)
+      // First allow the demo account
       if (email === 'demo@example.com' && password === 'password') {
         const newUser: User = {
           id: '1',
@@ -67,7 +67,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setUser(newUser);
         localStorage.setItem('user', JSON.stringify(newUser));
       } else {
-        throw new Error('Invalid email or password');
+        // Check locally persisted users (demo only — replace with server auth in production)
+        const usersRaw = localStorage.getItem('users');
+        const users = usersRaw ? JSON.parse(usersRaw) : {};
+        const entry = users[email];
+        if (entry && entry.password === password) {
+          setUser(entry.user as User);
+          localStorage.setItem('user', JSON.stringify(entry.user));
+        } else {
+          throw new Error('Invalid email or password');
+        }
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Login failed');
@@ -85,7 +94,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 1000));
 
-      // Demo validation (in real app, this would be server-side)
+      // Prevent registering demo user
       if (email === 'demo@example.com') {
         throw new Error('Email already in use');
       }
@@ -97,8 +106,29 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         createdAt: new Date().toISOString(),
       };
 
+      // Persist user and credentials locally for demo purposes
+      const usersRaw = localStorage.getItem('users');
+      const users = usersRaw ? JSON.parse(usersRaw) : {};
+      if (users[email]) {
+        throw new Error('Email already in use');
+      }
+      users[email] = { user: newUser, password };
+      localStorage.setItem('users', JSON.stringify(users));
+
       setUser(newUser);
       localStorage.setItem('user', JSON.stringify(newUser));
+
+      // Attempt to notify backend to send a welcome email (best-effort)
+      try {
+        const base = (import.meta as any).env?.VITE_API_BASE || '';
+        await fetch(`${base}/api/send-registration`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, name }),
+        });
+      } catch (err) {
+        // ignore network or server errors — this is best-effort in demo app
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Registration failed');
     } finally {

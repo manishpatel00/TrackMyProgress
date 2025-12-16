@@ -201,6 +201,39 @@ Response Time: Usually within 24-48 hours
 
         return self.send_email(user_email, "TrackMyProgress - Contact Form Received ✅", html_content, text_content)
 
+    def send_welcome_email(self, user_email: str, user_name: str) -> bool:
+        """Send a welcome email after registration"""
+        html_content = f"""
+        <html>
+            <body style="font-family: Arial, sans-serif; color: #333;">
+                <div style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
+                    <h2 style="color: #0066cc;">Welcome to TrackMyProgress 🎉</h2>
+                    <p>Hi <strong>{user_name}</strong>,</p>
+                    <p>Thanks for creating an account on <strong>TrackMyProgress</strong> — we're excited to help you track your learning journey.</p>
+                    <p>If you ever need help, reply to this email and our team will assist.</p>
+                    <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
+                    <p style="color: #999; font-size: 12px; text-align: center;">
+                        © 2025 TrackMyProgress. All rights reserved.
+                    </p>
+                </div>
+            </body>
+        </html>
+        """
+
+        text_content = f"""
+Welcome to TrackMyProgress
+
+Hi {user_name},
+
+Thanks for creating an account on TrackMyProgress — we're excited to help you track your learning journey.
+
+If you ever need help, reply to this email and our team will assist.
+
+© 2025 TrackMyProgress. All rights reserved.
+        """
+
+        return self.send_email(user_email, "Welcome to TrackMyProgress 🎉", html_content, text_content)
+
 
 # Create a singleton instance
 email_service = EmailService()

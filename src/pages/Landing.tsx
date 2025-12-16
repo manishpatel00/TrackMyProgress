@@ -9,6 +9,7 @@ import {
   TrendingUp,
 } from 'lucide-react';
 import { BrandLogo } from '@/components/BrandLogo';
+import { useAuth } from '@/contexts/AuthContext';
 
 export default function LandingPage() {
   return (
@@ -22,10 +23,8 @@ export default function LandingPage() {
 
         {/* LOGO & SIGN IN (Added sign-in button for functionality) */}
         <header className="flex justify-between items-center mb-16">
-          <BrandLogo className="h-15 md:h-16 " />
-          <Link to="/login">
-            <Button variant="ghost" className=" inline-flex items-center gap-2 mb-5 rounded-full bg-primary/10 px-4 py-1 text-sm font-bold text-primary border border-primary/20">Sign In</Button>
-          </Link>
+        
+         
         </header>
 
         {/* HERO SECTION */}
@@ -69,10 +68,15 @@ export default function LandingPage() {
                 <div className="w-full md:w-1/3 text-center">
                   <div className="relative inline-block">
                     <div className="absolute inset-0 blur-3xl bg-primary/30 rounded-full animate-pulse" />
-                    <Brain className="relative h-24 w-24 md:h-32 md:w-32 text-primary" />
+
+ <BrandLogo className="h-15 md:h-16 justify-center " />
+
+                    
+
+
+
                   </div>
-                  <h3 className="text-2xl font-bold mt-4"> </h3>
-                  <p className="text-sm text-muted-foreground mt-1">Personalized guidance.</p>
+                  
                 </div>
 
                 {/* Right: Mock Progress Chart/Data */}
@@ -151,23 +155,26 @@ function ProgressStat({ title, value, icon }: { title: string; value: string; ic
 
 // Existing FeatureCard, updated for better hover effect and padding
 function FeatureCard({
-  to = '#',
-  icon,
-  title,
-  description,
+    to = '#',
+    icon,
+    title,
+    description,
 }: {
-  to?: string;
-  icon: React.ReactNode;
-  title: string;
-  description: string;
+    to?: string;
+    icon: React.ReactNode;
+    title: string;
+    description: string;
 }) {
-  return (
-    <Link
-      to={to}
-      className="group rounded-2xl border bg-card/60 p-6 backdrop-blur-sm
-                 transition-all duration-300 relative
-                 hover:-translate-y-1 hover:shadow-2xl dark:hover:shadow-primary/20 hover:border-primary/50"
-    >
+    const { user } = useAuth();
+    const href = user ? to : `/login?returnTo=${encodeURIComponent(to ?? '/')}`;
+
+    return (
+        <Link
+            to={href}
+            className="group rounded-2xl border bg-card/60 p-6 backdrop-blur-sm
+                                transition-all duration-300 relative
+                                hover:-translate-y-1 hover:shadow-2xl dark:hover:shadow-primary/20 hover:border-primary/50"
+        >
       {/* Hover Border Glow */}
       <div className="absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100 dark:bg-primary/5 bg-primary/5" />
 
