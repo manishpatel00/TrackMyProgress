@@ -1,179 +1,87 @@
-# TrackMyProgress
+# 🎯 TrackMyProgress
 
-A concise learning and productivity tracker for students, self-learners and developers.
+> A modern web application to track your coding journey and learning progress with daily plans, session logging, and analytics.
 
-## Why this project exists
+**🔗 Live Demo:** [https://trackmyprogress.vercel.app](https://trackmyprogress.vercel.app)
 
-Learning is most effective when progress is visible and repeatable. TrackMyProgress provides simple, opinionated workflows to plan daily study, log sessions, and review trends so learners can stay consistent and make measurable progress.
+---
 
-## Key features
+## 🌟 Why TrackMyProgress?
 
-- Daily plans: create and follow focused study plans.
-- Session logging: record time, notes, and outcomes for each study session.
-- Journey log: keep a chronological record of milestones and notes.
-- Basic analytics: simple charts and summaries to surface trends.
-- Authentication scaffold: client + FastAPI backend with session handling.
-- Feedback & contact forms with optional email notifications.
-- AI-ready architecture: hooks and interfaces prepared for future smart insights (planned).
+Learning is most effective when progress is visible and repeatable. TrackMyProgress provides simple, opinionated workflows to plan daily study, log sessions, and review trends—helping learners stay consistent and make measurable progress.
 
-## Tech stack
+Whether you're a student, self-learner, or professional developer, this platform turns your learning goals into trackable achievements.
 
-- Frontend: React 18, TypeScript, Vite
-- Styling: Tailwind CSS
-- Backend: FastAPI (Python)
-- Database / Auth: pluggable — current code includes backend stubs (optional)
+---
 
-## Project structure
+## ✨ Key Features
 
-```
-.
-├── public/
-├── server/
-│   ├── ai_server.py        # FastAPI backend (development)
-│   ├── email_service.py    # Simple SMTP helper (optional)
-│   └── requirements.txt
-├── src/
-│   ├── components/
-│   ├── contexts/
-│   ├── hooks/
-│   ├── lib/
-│   ├── pages/
-│   └── styles/
-├── package.json
-├── tsconfig.json
-├── vite.config.ts
-└── README.md
-```
+### 📚 Core Learning Tools
+- **Dashboard** - Overview of progress, quick actions, and activity highlights
+- **Daily Plans** - Create and follow focused study plans with time tracking
+- **Journey Log** - Chronological record of sessions, milestones, and notes
+- **Statistics & Analytics** - Visual charts and summaries to surface learning trends
 
-## Getting started
+---
 
-1. Install dependencies:
+## 🏗️ Tech Stack
 
-```
-npm install
-python3 -m pip install -r server/requirements.txt
-```
-
-2. Configure environment (see below).
-
-3. Start the app (two terminals):
-
-```
-# Backend
-cd server
-python3 -m uvicorn ai_server:app --reload
-
-# Frontend
-npm run dev
-```
-
-4. Open the frontend at `http://localhost:5173`.
-
-## Environment variables (example)
-
-Create a `.env` in the project root or set these in your environment. Do not commit secrets.
-
-```
-# Frontend
-VITE_API_BASE=http://localhost:4000
-
-# Backend
-PORT=4000
-
-# Optional: email notifications
-SMTP_USER=you@example.com
-SMTP_PASSWORD=your-smtp-password
-SMTP_HOST=smtp.example.com
-SMTP_PORT=587
-```
-
-## Development scripts
-
-- `npm run dev` — start Vite dev server
-- `npm run build` — build production bundle
-- `npm run preview` — preview production build locally
-- `npm run lint` — run linter
-- `npm run format` — format code
-
-Backend (development):
-
-```
-python3 -m uvicorn ai_server:app --reload
-```
-
-## Roadmap / planned features
-
-- Improved analytics and goal tracking.
-- AI features (planned): smart insights, automated summaries, study recommendations — architecture is AI-ready but features are coming soon.
-- Integrations: calendar sync, external time trackers, OAuth providers.
-- Production hardening: DB migrations, tests, CI/CD.
-
-## Screenshots
-
-Placeholders: add screenshots or animated GIFs showing the dashboard, daily plan, and journey log here.
-
-## Contribution guidelines
-
-- Open an issue to discuss larger changes before implementing them.
-- Use feature branches named `feat/<short-description>` or `fix/<short-description>`.
-- Keep commits small and focused; write clear commit messages.
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
-
-## Author / contact
-
-Manish Patel — https://github.com/manishpatel
-
-Feedback, bug reports and pull requests are welcome.
-# 🎯 TrackMyProgress — Learning Tracker
-
-A modern web application to track your coding journey and learning progress with daily plans, session logging, and analytics.
-
-## ✨ What's Included
-
-### 📧 Communication Features
-- **Login Notifications** - Email alerts when you sign in
-- **Feedback System** - Send suggestions directly to the team
-- **Contact Forms** - Easy support request system
+| Layer | Technology |
+|-------|------------|
+| **Frontend** | React 18, TypeScript, Vite |
+| **Styling** | Tailwind CSS, Radix UI, Lucide Icons |
+| **Backend** | FastAPI (Python 3.9+) |
+| **Email** | SMTP (Gmail, Outlook, SendGrid) |
+| **State Management** | React Context API |
+| **Routing** | React Router v7 |
+| **Deployment** | Vercel (Frontend), Custom (Backend) |
 
 ---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 18+ with npm
-- Python 3.9+
+- **Node.js** 18+ with npm
+- **Python** 3.9+
+- **Gmail Account** (for email notifications - optional)
 
 ### Installation
 
 1. **Clone the repository**
 ```bash
-cd coding-journey-tracker
+git clone https://github.com/manishpatel00/TrackMyProgress.git
+cd trackmyprogress
 ```
 
 2. **Install dependencies**
 ```bash
+# Frontend dependencies
 npm install
-python3 -m pip install -r server/requirements.txt
+
+# Backend dependencies
+cd server
+python3 -m pip install -r requirements.txt
+cd ..
 ```
 
-3. **Configure `.env`** (optional)
+3. **Configure environment variables**
+
+Create a `.env` file in the root directory:
+
 ```env
-# Optional (Email notifications)
+# Backend Configuration
+VITE_API_BASE=http://localhost:4000
+PORT=4000
+
+# Email Notifications (Optional)
 SMTP_USER=your-email@gmail.com
 SMTP_PASSWORD=your-app-password
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
-ADMIN_EMAIL=your-email@gmail.com
-
-# Backend
-VITE_API_BASE=http://localhost:4000
-PORT=4000
+ADMIN_EMAIL=maishpatel953249@gmail.com
 ```
 
-4. **Start Application**
+4. **Start the application**
 
 **Option A: Using start script**
 ```bash
@@ -181,256 +89,338 @@ chmod +x start.sh
 ./start.sh
 ```
 
-**Option B: Manual (2 terminals)**
+**Option B: Manual start (2 terminals)**
 
-Terminal 1 - Backend:
+*Terminal 1 - Backend:*
 ```bash
 cd server
-python3 -m uvicorn ai_server:app --host 0.0.0.0 --port 4000
+python3 -m uvicorn ai_server:app --host 0.0.0.0 --port 4000 --reload
 ```
 
-Terminal 2 - Frontend:
+*Terminal 2 - Frontend:*
 ```bash
 npm run dev
 ```
 
-5. **Open in Browser**
-- Frontend: http://localhost:5173
-- Backend API: http://localhost:4000
+5. **Access the application**
+- **Frontend:** [http://localhost:5173](http://localhost:5173)
+- **Backend API:** [http://localhost:4000](http://localhost:4000)
+- **API Docs:** [http://localhost:4000/docs](http://localhost:4000/docs)
 
 ---
 
-## 📖 Documentation
-
-- **[SETUP_COMPLETE.md](SETUP_COMPLETE.md)** - Comprehensive setup guide
-- **[INTEGRATION_COMPLETE.md](INTEGRATION_COMPLETE.md)** - Integration details
-
----
-
-## 🎨 Features in Detail
-
-### Core App
-- **Dashboard** - Overview of progress, quick actions, and highlights
-- **Daily Plan** - Create and follow daily learning plans
-- **Journey Log** - Record sessions, notes, and milestones
-- **Statistics** - Charts and analytics of your activity
-
-### Forms & Feedback
-- Contact form with email confirmation
-- Feedback submission system
-- Email notifications to admin
-
----
-## 🔧 Available Scripts
-
-```bash
-# Development
-npm run dev          # Start dev server (5173)
-
-# Building
-npm run build        # Build production bundle
-npm run preview      # Preview production build
-
-# Quality
-npm run lint         # Run linter
-npm run format       # Format code
-
-# Server
-python3 -m uvicorn ai_server:app --reload  # Dev server
-```
-
----
-
-## 📦 Project Structure
+## 📁 Project Structure
 
 ```
-.
+trackmyprogress/
+├── public/                        # Static assets
 ├── src/
 │   ├── components/
-│   │   ├── ai/
-│   │   │   ├── AIChat.tsx              ← ChatGPT-like chat
-│   │   │   ├── AIPlanner.tsx           ← Study planner
-│   │   │   └── AISummary.tsx           ← Progress summary
-│   │   ├── ContactForm.tsx             ← Contact form
-│   │   ├── FeedbackForm.tsx            ← Feedback form
 │   │   ├── layout/
-│   │   └── ui/
+│   │   │   ├── Header.tsx         # App header with navigation
+│   │   │   └── Sidebar.tsx        # Sidebar navigation
+│   │   ├── ui/                    # Reusable UI components
+│   │   ├── ContactForm.tsx        # Contact form component
+│   │   └── FeedbackForm.tsx       # Feedback form component
 │   ├── pages/
-│   │   ├── AIChatPage.tsx
-│   │   ├── AIPlannerPage.tsx
-│   │   ├── AISummaryPage.tsx
-│   │   ├── AIToolsHub.tsx              ← AI hub
-│   │   ├── Dashboard.tsx
-│   │   ├── DailyPlan.tsx
-│   │   ├── JourneyLog.tsx
-│   │   ├── Stats.tsx
-│   │   └── Login.tsx
+│   │   ├── Dashboard.tsx          # Main dashboard
+│   │   ├── DailyPlan.tsx          # Daily planning page
+│   │   ├── JourneyLog.tsx         # Session logging page
+│   │   ├── Stats.tsx              # Analytics page
+│   │   └── Login.tsx              # Authentication page
 │   ├── contexts/
-│   │   ├── AuthContext.tsx
-│   │   ├── DataContext.tsx
-│   │   └── ThemeContext.tsx
-│   ├── hooks/
-│   ├── lib/
-│   └── types/
+│   │   ├── AuthContext.tsx        # Authentication state
+│   │   ├── DataContext.tsx        # App data state
+│   │   └── ThemeContext.tsx       # Theme management
+│   ├── hooks/                     # Custom React hooks
+│   ├── lib/                       # Utilities and helpers
+│   ├── types/                     # TypeScript type definitions
+│   └── styles/                    # Global styles
 ├── server/
-│   ├── ai_server.py                    ← FastAPI server
-│   ├── email_service.py                ← Email notifications
-│   └── requirements.txt
-├── .env                                ← Configuration
-├── vite.config.ts
-├── tsconfig.json
-└── package.json
+│   ├── ai_server.py               # FastAPI application
+│   ├── email_service.py           # Email notification service
+│   └── requirements.txt           # Python dependencies
+├── .env                           # Environment variables
+├── .gitignore                     # Git ignore rules
+├── package.json                   # Node dependencies
+├── tsconfig.json                  # TypeScript configuration
+├── vite.config.ts                 # Vite configuration
+├── tailwind.config.js             # Tailwind CSS configuration
+└── README.md                      # This file
 ```
 
 ---
 
-## 🛠️ Technology Stack
+## 🔧 Available Scripts
 
-| Component | Technology |
-|-----------|-----------|
-| **Frontend** | React 18, TypeScript, Vite |
-| **Styling** | Tailwind CSS, Radix UI |
-| **Backend** | FastAPI, Python 3.9+ |
-| **AI Model** | Google Gemini 2.5 Flash |
-| **Email** | SMTP (Gmail, Outlook, etc.) |
-| **State** | React Context API |
-| **Routing** | React Router v7 |
+### Frontend
+```bash
+npm run dev          # Start development server (port 5173)
+npm run build        # Build production bundle
+npm run preview      # Preview production build locally
+npm run lint         # Run ESLint
+npm run format       # Format code with Prettier
+```
 
----
+### Backend
+```bash
+# Development
+python3 -m uvicorn ai_server:app --reload
 
-## 🔐 Security
-
-✅ **Features**
-- No sensitive data in browser
-- API keys in backend only
-- SMTP passwords never exposed
-- Input validation on forms
-- CORS protection enabled
-- Error messages safe
+# Production
+gunicorn -w 4 -b 0.0.0.0:4000 server.ai_server:app
+```
 
 ---
 
-## 📧 Email Setup
+## 🔐 Setup Guides
 
-### Gmail (Recommended)
+### 📧 Gmail SMTP Setup
 
-1. Enable 2FA at [myaccount.google.com/security](https://myaccount.google.com/security)
-2. Get App Password at [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords)
-3. Update `.env`:
+1. **Enable 2-Factor Authentication**
+   - Go to [Google Account Security](https://myaccount.google.com/security)
+   - Enable 2-Step Verification
+
+2. **Generate App Password**
+   - Visit [App Passwords](https://myaccount.google.com/apppasswords)
+   - Select "Mail" and "Other (Custom name)"
+   - Name it "TrackMyProgress"
+   - Copy the 16-character password
+
+3. **Update `.env`**
 ```env
 SMTP_USER=your-email@gmail.com
-SMTP_PASSWORD=16-char-app-password
+SMTP_PASSWORD=your-16-char-app-password
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+ADMIN_EMAIL=your-email@gmail.com
 ```
 
-### Other Services
-- Outlook: `smtp-mail.outlook.com`
-- SendGrid: `smtp.sendgrid.net`
-- Mailgun: `smtp.mailgun.org`
+### 🌐 Other Email Providers
 
----
-
-## 🐛 Troubleshooting
-
-### AI Service Errors (500)
-- Verify API key at https://ai.google.dev
-- Check backend running on :4000
-- See server logs for details
-
-### Email Not Sending
-- Verify SMTP credentials
-- Check Gmail 2FA & app password
-- Confirm email in `.env`
-
-### Port Already in Use
-```bash
-lsof -i :4000  # Find process
-kill -9 <PID>  # Kill it
-```
-
-### CORS Issues
-- Backend must be on http://localhost:4000
-- Frontend must be on http://localhost:5173
-- Check `VITE_API_BASE` in `.env`
-
----
-
-## 📞 Support
-
-**Email**: manishpatel953249@gmail.com
-
-Use the in-app feedback form or contact directly for:
-- Bug reports
-- Feature requests
-- Questions
-- General support
+| Provider | SMTP Host | Port |
+|----------|-----------|------|
+| **Outlook** | smtp-mail.outlook.com | 587 |
+| **Yahoo** | smtp.mail.yahoo.com | 587 |
+| **SendGrid** | smtp.sendgrid.net | 587 |
+| **Mailgun** | smtp.mailgun.org | 587 |
 
 ---
 
 ## 🚀 Deployment
 
-### Build for Production
+### Deploy to Vercel (Frontend)
+
+1. **Push to GitHub**
 ```bash
-npm run build
+git add .
+git commit -m "Initial commit"
+git push origin main
 ```
 
-Output in `/dist` directory
+2. **Connect to Vercel**
+   - Go to [vercel.com](https://vercel.com)
+   - Import your repository
+   - Configure build settings:
+     - **Framework:** Vite
+     - **Build Command:** `npm run build`
+     - **Output Directory:** `dist`
+
+3. **Add Environment Variables**
+   - Add `VITE_API_BASE` with your backend URL
 
 ### Deploy Backend
+
+**Option 1: Render.com**
 ```bash
-gunicorn -w 4 -b 0.0.0.0:4000 server.ai_server:app
+# Deploy as Web Service
+# Build Command: pip install -r requirements.txt
+# Start Command: gunicorn -w 4 -b 0.0.0.0:$PORT server.ai_server:app
 ```
 
-### Environment Variables
-Set in your hosting platform:
-- `GOOGLE_API_KEY`
-- `SMTP_*` (if using email)
-- `VITE_API_BASE`
+**Option 2: Railway.app**
+```bash
+# Railway automatically detects FastAPI
+# Add environment variables in dashboard
+```
+
+**Option 3: AWS/GCP/Azure**
+- Use Docker or deploy directly with gunicorn
+- Configure environment variables
+- Set up HTTPS with SSL certificates
 
 ---
 
-## 📚 Resources
+## 🐛 Troubleshooting
 
-- [Gemini API Docs](https://ai.google.dev/docs)
-- [FastAPI Docs](https://fastapi.tiangolo.com/)
-- [React Docs](https://react.dev/)
-- [Vite Docs](https://vitejs.dev/)
+### Email Not Sending
+- ✅ Verify Gmail 2FA is enabled
+- ✅ Check App Password is correct (16 characters, no spaces)
+- ✅ Confirm SMTP settings match your provider
+- ✅ Check spam/junk folder for test emails
+
+### Port Already in Use
+```bash
+# Find process using port
+lsof -i :4000
+
+# Kill the process
+kill -9 <PID>
+
+# Or use different port in .env
+PORT=5000
+```
+
+### CORS Issues
+- ✅ Backend must run on `http://localhost:4000`
+- ✅ Frontend must run on `http://localhost:5173`
+- ✅ Check `VITE_API_BASE` in `.env` matches backend URL
+- ✅ Verify CORS settings in `ai_server.py`
+
+### Build Fails on Vercel
+- ✅ Ensure all dependencies in `package.json` are correct
+- ✅ Check Node.js version compatibility
+- ✅ Review build logs for specific errors
+- ✅ Verify `vite.config.ts` is properly configured
 
 ---
 
-## 📝 License
+## 🛡️ Security Features
 
-MIT - Use freely for personal and commercial projects
+✅ **No Client Secrets** - SMTP credentials never exposed to frontend  
+✅ **Input Validation** - All form inputs sanitized  
+✅ **CORS Protection** - Configured for specific origins  
+✅ **Safe Error Messages** - No sensitive data in error responses  
+✅ **Email Verification** - Confirmation emails for important actions
 
 ---
 
-**Made with ❤️ for learners | Powered by Google Gemini AI**
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🗺️ Roadmap
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Phase 1: Core Features ✅
+- [x] Dashboard with progress overview
+- [x] Daily planning system
+- [x] Journey log for sessions
+- [x] Basic analytics and charts
+- [x] Authentication scaffold
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Phase 2: Enhanced Features 🚧
+- [ ] Advanced analytics with insights
+- [ ] Goal tracking with milestones
+- [ ] Calendar integration (Google Calendar)
+- [ ] External time tracker sync (Toggl, RescueTime)
+- [ ] Pomodoro timer integration
+- [ ] Spaced repetition reminders
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### Phase 3: Collaboration 📋
+- [ ] Share progress with peers
+- [ ] Study group features
+- [ ] Public learning profiles
+- [ ] Leaderboards and achievements
+
+### Phase 4: Production Hardening 📋
+- [ ] Database migrations (PostgreSQL/MongoDB)
+- [ ] Unit and integration tests
+- [ ] CI/CD pipeline
+- [ ] Performance monitoring
+- [ ] OAuth providers (GitHub, Google)
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these guidelines:
+
+### How to Contribute
+
+1. **Fork the repository**
+2. **Create a feature branch**
+   ```bash
+   git checkout -b feat/amazing-feature
+   ```
+3. **Make your changes**
+   - Write clean, documented code
+   - Follow existing code style
+   - Add tests if applicable
+4. **Commit with clear messages**
+   ```bash
+   git commit -m "feat: add amazing feature"
+   ```
+5. **Push to your fork**
+   ```bash
+   git push origin feat/amazing-feature
+   ```
+6. **Open a Pull Request**
+
+### Commit Convention
+- `feat:` New feature
+- `fix:` Bug fix
+- `docs:` Documentation changes
+- `style:` Code style changes (formatting)
+- `refactor:` Code refactoring
+- `test:` Adding tests
+- `chore:` Maintenance tasks
+
+### Code Style
+- Use TypeScript for type safety
+- Follow ESLint and Prettier rules
+- Write meaningful variable names
+- Add comments for complex logic
+- Keep functions small and focused
+
+---
+
+## 📚 Resources & Documentation
+
+### Official Docs
+- [FastAPI Documentation](https://fastapi.tiangolo.com/) - Backend framework
+- [React Documentation](https://react.dev/) - Frontend library
+- [Vite Documentation](https://vitejs.dev/) - Build tool
+- [Tailwind CSS](https://tailwindcss.com/) - Styling framework
+
+---
+
+## 👨‍💻 Author
+
+**Manish Patel**
+
+- GitHub: [@manishpatel](https://github.com/manishpatel00)
+- Email: manishpatel953249@gmail.com
+- Project: [TrackMyProgress](https://trackmyprogress.vercel.app)
+
+---
+
+## 📞 Support & Feedback
+
+Need help or have suggestions? We'd love to hear from you!
+
+- 📧 **Email:** manishpatel953249@gmail.com
+- 💬 **Discussions:** Join our community discussions
+
+---
+
+## 🙏 Acknowledgments
+
+Built with these amazing technologies:
+- [React](https://react.dev/) - UI library
+- [FastAPI](https://fastapi.tiangolo.com/) - Backend framework
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [Radix UI](https://www.radix-ui.com/) - UI primitives
+- [Lucide Icons](https://lucide.dev/) - Beautiful icons
+- [Vercel](https://vercel.com/) - Deployment platform
+
+---
+
+## ⭐ Star History
+
+If you find this project helpful, please consider giving it a star on GitHub!
+
+---
+
+<div align="center">
+
+**Made with ❤️ for learners everywhere**
+
+[Live Demo](https://trackmyprogress.vercel.app) • [Report Bug](https://github.com/manishpatel/trackmyprogress/issues) • [Request Feature](https://github.com/manishpatel/trackmyprogress/issues)
+
+</div>
