@@ -1,0 +1,13 @@
+fastapi>=0.95.0
+uvicorn[standard]>=0.22.0
+python-dotenv>=1.0.0
+google-generativeai>=0.2.0
+aiosmtplib>=2.0.0
+email-validator>=2.0.0
+
+# Notes:
+# - `google-generativeai` is the SDK used for Google Gemini/Vertex generative models.
+# - `aiosmtplib` is for async SMTP email sending (Gmail, Outlook, etc.)
+# - `email-validator` validates email addresses
+# - In production you may prefer `google-cloud-aiplatform` with service account JSON
+#   and Application Default Credentials. See Google Cloud docs for Vertex AI.
